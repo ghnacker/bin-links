@@ -26,6 +26,15 @@ for (const isWindows of [true, false]) {
         : 'LINK ../lib/node_modules/foo/foo.js /path/to/bin/foo'
     ])))
 
+    t.test('link bins to', t => linkBins({
+        path: resolve('/path/to/lib/node_modules/foo'),
+        top: resolve('/path/to/bar'),
+        pkg,
+    }).then(linked => t.strictSame(linked, [
+      isWindows ? 'SHIM ..\\..\\..\\lib\\node_modules\\foo\\foo.js \\path\\to\\bar\\node_modules\\.bin\\foo'
+        : 'LINK ../../../lib/node_modules/foo/foo.js /path/to/bar/node_modules/.bin/foo'
+    ])))
+
     t.test('no bins to link', t => linkBins({
         path: resolve('/path/to/node_modules/foo'),
         top: true,
