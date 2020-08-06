@@ -1,5 +1,5 @@
 {
-  "name": "bin-links",
+  "name": "@ghnacker/bin-links",
   "version": "2.1.3",
   "description": "JavaScript package binary linker",
   "main": "index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/npm/bin-links.git"
+    "url": "git://github.com/ghnacker/bin-links.git"
   },
   "keywords": [
     "npm",
