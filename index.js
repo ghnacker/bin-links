@@ -27,5 +27,18 @@ const binLinks = opts => {
   ])
 }
 
-binLinks.getPaths = require('./lib/get-paths.js')
-module.exports = binLinks
+const shimBin = require('./lib/shim-bin.js')
+const linkGently = require('./lib/link-gently.js')
+const resetSeen = () => {
+  shimBin.resetSeen()
+  linkGently.resetSeen()
+}
+
+const checkBins = require('./lib/check-bins.js')
+const getPaths = require('./lib/get-paths.js')
+
+module.exports = Object.assign(binLinks, {
+  checkBins,
+  resetSeen,
+  getPaths,
+})
